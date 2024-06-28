@@ -12,6 +12,8 @@ spring:
     uri: http://localhost:8888
     username: ${CONFIG_SERVER_USR}
     password: ${CONFIG_SERVER_PWD}
+server: 
+  port: 8098
 
 ---
 spring.config.activate.on-profile: docker
