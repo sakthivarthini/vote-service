@@ -63,10 +63,10 @@
             <version>${micrometer.version}</version>
         </dependency>
 
-        <!-- Netty Runtime -->
+        <!-- Netty Transport (not netty-runtime) -->
         <dependency>
             <groupId>io.netty</groupId>
-            <artifactId>netty-runtime</artifactId>
+            <artifactId>netty-transport</artifactId>
             <version>${netty.version}</version>
         </dependency>
 
@@ -90,10 +90,12 @@
         </dependency>
 
         <!-- For non-reactive Redis (optional if needed) -->
+        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        -->
 
         <!-- Additional dependencies (example) -->
         <dependency>
