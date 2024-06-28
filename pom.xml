@@ -24,8 +24,8 @@
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.1</spring-cloud.version>
-        <micrometer.version>latest_version</micrometer.version>
-        <netty.version>latest_version</netty.version>
+        <micrometer.version>1.8.0</micrometer.version>
+        <netty.version>4.1.72.Final</netty.version>
     </properties>
 
     <!-- Dependencies -->
