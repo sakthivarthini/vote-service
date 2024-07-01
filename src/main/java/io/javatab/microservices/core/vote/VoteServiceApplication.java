@@ -9,21 +9,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class VoteServiceApplication implements CommandLineRunner {
 
-    private final RedisRepository repository;
+	private final RedisRepository repository;
 
-    public VoteServiceApplication(RedisRepository repository) {
-        this.repository = repository;
-    }
+	public VoteServiceApplication(RedisRepository repository) {
+		this.repository = repository;
+	}
 
-    public static void main(String[] args) {
-        SpringApplication.run(VoteServiceApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(VoteServiceApplication.class, args);
+	}
 
-    @Override
-    public void run(String... args) throws Exception {
-        Vote vote = new Vote(1, 1, 3, 9);
-        repository.save(vote).subscribe(aLong -> 
-            repository.getVote(aLong).subscribe(vote1 -> 
-                System.out.println("Vote " + vote1.getCourseId())));
-    }
+	@Override
+	public void run(String... args) throws Exception {
+		Vote vote = new Vote(1, 1, 3, 9);
+		repository.save(vote).subscribe(aLong -> System.out.println(repository.getVote(aLong).subscribe(vote1 -> System.out.println("Vote " + vote1.courseId()))));
+	}
 }
