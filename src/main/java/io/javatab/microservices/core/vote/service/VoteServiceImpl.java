@@ -1,3 +1,4 @@
+
 package io.javatab.microservices.core.vote.service;
 
 import io.javatab.microservices.api.core.vote.Vote;
@@ -27,3 +28,4 @@ public class VoteServiceImpl implements VoteService {
         return Mono.just(new Vote(1, 123, 1, 2));
     }
 }
+
