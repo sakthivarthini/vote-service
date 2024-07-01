@@ -14,7 +14,7 @@ spring:
     password: ${CONFIG_SERVER_PWD}
 
 server: 
-  port: 8098
+  port: 8080
 
 ---
 spring.config.activate.on-profile: docker
