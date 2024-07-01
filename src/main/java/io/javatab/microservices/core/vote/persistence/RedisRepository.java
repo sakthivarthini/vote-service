@@ -7,22 +7,24 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-public class RedisRepository {
+public class RedisRepositoryImpl implements RedisRepository {
 
-    private final static String KEY = "VOTE";
+    private static final String KEY = "VOTE";
 
     private final ReactiveRedisOperations<String, Vote> redisOperations;
     private final ReactiveHashOperations<String, String, Vote> hashOperations;
 
-    public RedisRepository(ReactiveRedisOperations<String, Vote> redisOperations) {
+    public RedisRepositoryImpl(ReactiveRedisOperations<String, Vote> redisOperations) {
         this.redisOperations = redisOperations;
         this.hashOperations = redisOperations.opsForHash();
     }
 
-    public Mono<Long> save(Vote post){
-        return this.redisOperations.opsForList().rightPush(KEY, post);
+    @Override
+    public Mono<Long> save(Vote vote){
+        return this.redisOperations.opsForList().rightPush(KEY, vote);
     }
 
+    @Override
     public Mono<Vote> getVote(Long id) {
         return this.redisOperations.opsForList().rightPop(KEY);
     }
