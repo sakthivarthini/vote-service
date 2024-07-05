@@ -1,0 +1,25 @@
+stages:
+  - stage: Generate Service Deployment YAML
+    steps:
+      - script: |
+          def serviceYamlContent = """
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: poojaimage-service
+            namespace: default
+          spec:
+            selector:
+              app: poojaimage
+            ports:
+              - protocol: TCP
+                port: 96
+                targetPort: 9096
+          """
+          writeFile file: 'service-deployment.yaml', text: serviceYamlContent
+      - archiveArtifacts:
+          artifacts: 'service-deployment.yaml'
+          allowEmptyArchive: true
+      - archiveArtifacts:
+          artifacts: 'k0s-deployment.yaml'
+          onlyIfSuccessful: true
