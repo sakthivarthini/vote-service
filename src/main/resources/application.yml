@@ -14,7 +14,7 @@ spring:
       password: ${CONFIG_SERVER_PWD}
 
 server:
-  port: 6369
+  port: 6399
   logging:
     level:
       org.springframework: DEBUG
